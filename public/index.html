@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Securely delete your account and all associated data." />
+  <meta name="robots" content="noindex" />
+  <title>Delete Account</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Animated aurora background -->
+  <div class="aurora" aria-hidden="true">
+    <div class="aurora__blob aurora__blob--1"></div>
+    <div class="aurora__blob aurora__blob--2"></div>
+    <div class="aurora__blob aurora__blob--3"></div>
+    <div class="aurora__grid"></div>
+    <div class="aurora__noise"></div>
+  </div>
+
+  <main class="shell" role="main">
+    <!-- Brand mark -->
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7v6c0 5 3.5 9 9 10 5.5-1 9-5 9-10V7l-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="brand__name">FindMedi</span>
+    </div>
+
+    <!-- Main card -->
+    <article class="glass">
+      <div class="glass__shine" aria-hidden="true"></div>
+
+      <header class="glass__header">
+        <p class="eyebrow">
+          <span class="eyebrow__dot"></span>
+          <span>Account deletion</span>
+        </p>
+        <h1 class="headline">
+          Erase your <em>account</em>
+          <br />from our systems.
+        </h1>
+        <p class="subhead">
+          Verify your identity, confirm your choice, and we'll permanently
+          remove every trace of your data. This cannot be undone.
+        </p>
+      </header>
+
+      <!-- Progress rail -->
+      <div class="rail" aria-label="Deletion progress">
+        <div class="rail__track">
+          <div class="rail__fill" id="rail-fill" style="width: 0%"></div>
+        </div>
+        <ol class="rail__steps">
+          <li class="rail__step is-active" data-step="phone">
+            <span class="rail__num">01</span>
+            <span class="rail__label">Identify</span>
+          </li>
+          <li class="rail__step" data-step="otp">
+            <span class="rail__num">02</span>
+            <span class="rail__label">Verify</span>
+          </li>
+          <li class="rail__step" data-step="confirm">
+            <span class="rail__num">03</span>
+            <span class="rail__label">Confirm</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- STEP 1: Phone -->
+      <section id="step-phone" class="step" aria-labelledby="step-phone-title">
+        <h2 id="step-phone-title" class="step__title">Enter your phone number</h2>
+
+        <form id="phone-form" novalidate class="form">
+          <div class="field">
+            <label for="phone" class="field__label">Phone</label>
+            <div class="field__wrap">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="field__input"
+                placeholder="+91 98765 43210"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+                aria-describedby="phone-help phone-error"
+              />
+            </div>
+            <p id="phone-help" class="field__help">
+              International format with country code.
+            </p>
+            <p id="phone-error" class="field__error" role="alert"></p>
+          </div>
+
+          <div id="recaptcha-container" class="recaptcha"></div>
+
+          <button type="submit" id="send-otp-btn" class="button button--primary">
+            <span class="button__label">Send verification code</span>
+            <span class="button__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="button__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- STEP 2: OTP -->
+      <section id="step-otp" class="step is-hidden" aria-labelledby="step-otp-title">
+        <h2 id="step-otp-title" class="step__title">Enter verification code</h2>
+        <p class="step__description">
+          Sent to <strong id="phone-display" class="mono"></strong>
+        </p>
+
+        <form id="otp-form" novalidate class="form">
+          <div class="field">
+            <label for="otp" class="field__label">6-digit code</label>
+            <input
+              type="text"
+              id="otp"
+              name="otp"
+              class="field__input field__input--otp mono"
+              placeholder="••••••"
+              autocomplete="one-time-code"
+              inputmode="numeric"
+              maxlength="6"
+              pattern="\d{6}"
+              required
+              aria-describedby="otp-error"
+            />
+            <p id="otp-error" class="field__error" role="alert"></p>
+          </div>
+
+          <div class="button-row">
+            <button type="button" id="back-btn" class="button button--ghost">
+              <span class="button__label">Back</span>
+            </button>
+            <button type="submit" id="verify-otp-btn" class="button button--primary">
+              <span class="button__label">Continue</span>
+              <span class="button__spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <button type="button" id="resend-btn" class="link-button" disabled>
+            Resend in <span id="resend-timer" class="mono">30</span>s
+          </button>
+        </form>
+      </section>
+
+      <!-- STEP 3: Confirm -->
+      <section id="step-confirm" class="step is-hidden" aria-labelledby="step-confirm-title">
+        <h2 id="step-confirm-title" class="step__title">Final confirmation</h2>
+
+        <div class="warning" role="alert">
+          <div class="warning__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="warning__body">
+            <h3 class="warning__title">This is permanent</h3>
+            <ul class="warning__list">
+              <li>Your profile and credentials</li>
+              <li>Saved data and preferences</li>
+              <li>Complete activity history</li>
+            </ul>
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="confirm-checkbox" />
+          <span class="checkbox__box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="checkbox__text">
+            I understand this action is irreversible and all my data will be permanently erased.
+          </span>
+        </label>
+
+        <div class="button-row">
+          <button type="button" id="cancel-btn" class="button button--ghost">
+            <span class="button__label">Cancel</span>
+          </button>
+          <button type="button" id="delete-btn" class="button button--danger" disabled>
+            <span class="button__label">Delete account</span>
+            <span class="button__spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SUCCESS -->
+      <section id="step-success" class="step is-hidden" aria-labelledby="step-success-title">
+        <div class="success">
+          <div class="success__orb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 id="step-success-title" class="success__title">
+            Account <em>erased.</em>
+          </h2>
+          <p class="success__description">
+            Every trace of your data has been permanently removed.
+            Thank you for being with us.
+          </p>
+        </div>
+      </section>
+
+      <!-- Toast / status -->
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </article>
+
+    <!-- <footer class="foot">
+      <span>Need help?</span>
+      <a href="mailto:support@findmedi.com">support@findmedi.com</a>
+    </footer> -->
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
