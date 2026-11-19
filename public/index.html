@@ -3,238 +3,376 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Securely delete your account and all associated data." />
-  <meta name="robots" content="noindex" />
-  <title>Delete Account</title>
+  <meta name="description" content="FindMedi Developer Portal - Official resources, user privacy policy, and account data deletion management." />
+  <meta name="keywords" content="FindMedi, FindMedi Developer, Healthcare API, Medical Store Platform, privacy policy, account deletion" />
+  <meta name="author" content="FindMedi Team" />
+  <title>FindMedi Developer & Portal Hub</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FindMedi Developer & Portal Hub" />
+  <meta property="og:description" content="FindMedi developer gateway, privacy policy, and account deletion services." />
+  <meta property="og:url" content="https://findmedi.web.app/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/app-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/app-icon.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/home.css" />
 </head>
 <body>
-  <!-- Animated aurora background -->
-  <div class="aurora" aria-hidden="true">
-    <div class="aurora__blob aurora__blob--1"></div>
-    <div class="aurora__blob aurora__blob--2"></div>
-    <div class="aurora__blob aurora__blob--3"></div>
-    <div class="aurora__grid"></div>
-    <div class="aurora__noise"></div>
+  <!-- Ambient background glow -->
+  <div class="glow-bg" aria-hidden="true">
+    <div class="glow-circle glow-1"></div>
+    <div class="glow-circle glow-2"></div>
+    <div class="glow-circle glow-3"></div>
+    <div class="grid-overlay"></div>
   </div>
 
-  <main class="shell" role="main">
-    <!-- Brand mark -->
-    <div class="brand">
-      <div class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L3 7v6c0 5 3.5 9 9 10 5.5-1 9-5 9-10V7l-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <span class="brand__name">FindMedi</span>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-wrap" aria-label="Main Navigation">
+        <a href="/" class="brand-logo" title="FindMedi Home">
+          <div class="logo-icon" aria-hidden="true" style="background: transparent; overflow: hidden; padding: 2px;">
+            <img src="/assets/app-icon.png" alt="FindMedi Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+          </div>
+          <span>FindMedi</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.chirag.findmedi&pcampaignid=web_share" target="_blank" rel="noopener">Get App</a></li>
+          <li><a href="https://sites.google.com/view/find-medi/home" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><a href="/delete-account">Delete Account</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.chirag.findmedi&pcampaignid=web_share" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="padding: 0.45rem 1.1rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a2.22 2.22 0 0 1-.61-1.572V3.386c0-.598.225-1.157.609-1.572zm11.24 11.24l2.42 2.42-12.766 7.37 10.346-9.79zm0-2.108L4.503 1.156l12.766 7.37-2.42 2.42zm1.464 1.054l3.87 2.235c.957.553.957 1.455 0 2.008l-3.87 2.235-2.607-2.607 2.607-2.871z"/>
+            </svg>
+            Google Play
+          </a>
+          <a href="/delete-account" class="btn btn-outline-danger btn-sm">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Account Safety
+          </a>
+          <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <!-- Main card -->
-    <article class="glass">
-      <div class="glass__shine" aria-hidden="true"></div>
-
-      <header class="glass__header">
-        <p class="eyebrow">
-          <span class="eyebrow__dot"></span>
-          <span>Account deletion</span>
-        </p>
-        <h1 class="headline">
-          Erase your <em>account</em>
-          <br />from our systems.
+  <!-- Hero Section -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>FindMedi Production Portal & Developer Services</span>
+        </div>
+        <h1 class="hero-title">
+          Connecting Healthcare & Medicine Search with <span class="gradient-text">Trust & Security</span>
         </h1>
-        <p class="subhead">
-          Verify your identity, confirm your choice, and we'll permanently
-          remove every trace of your data. This cannot be undone.
+        <p class="hero-description">
+          Welcome to the official FindMedi developer & operational gateway. Access our privacy policy, compliance records, and secure user data deletion workflows.
         </p>
-      </header>
 
-      <!-- Progress rail -->
-      <div class="rail" aria-label="Deletion progress">
-        <div class="rail__track">
-          <div class="rail__fill" id="rail-fill" style="width: 0%"></div>
+        <div class="hero-cta">
+          <a href="https://play.google.com/store/apps/details?id=com.chirag.findmedi&pcampaignid=web_share" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 0.75rem 1.8rem; font-size: 1.05rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a2.22 2.22 0 0 1-.61-1.572V3.386c0-.598.225-1.157.609-1.572zm11.24 11.24l2.42 2.42-12.766 7.37 10.346-9.79zm0-2.108L4.503 1.156l12.766 7.37-2.42 2.42zm1.464 1.054l3.87 2.235c.957.553.957 1.455 0 2.008l-3.87 2.235-2.607-2.607 2.607-2.871z"/>
+            </svg>
+            <span>Download on Google Play</span>
+          </a>
+          <a href="https://sites.google.com/view/find-medi/home" target="_blank" rel="noopener" class="btn btn-secondary">
+            <span>Privacy Policy</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a href="/delete-account" class="btn btn-secondary">
+            <span>Delete Account Portal</span>
+          </a>
         </div>
-        <ol class="rail__steps">
-          <li class="rail__step is-active" data-step="phone">
-            <span class="rail__num">01</span>
-            <span class="rail__label">Identify</span>
-          </li>
-          <li class="rail__step" data-step="otp">
-            <span class="rail__num">02</span>
-            <span class="rail__label">Verify</span>
-          </li>
-          <li class="rail__step" data-step="confirm">
-            <span class="rail__num">03</span>
-            <span class="rail__label">Confirm</span>
-          </li>
-        </ol>
-      </div>
 
-      <!-- STEP 1: Phone -->
-      <section id="step-phone" class="step" aria-labelledby="step-phone-title">
-        <h2 id="step-phone-title" class="step__title">Enter your phone number</h2>
-
-        <form id="phone-form" novalidate class="form">
-          <div class="field">
-            <label for="phone" class="field__label">Phone</label>
-            <div class="field__wrap">
-              <span class="field__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="field__input"
-                placeholder="+91 98765 43210"
-                autocomplete="tel"
-                inputmode="tel"
-                required
-                aria-describedby="phone-help phone-error"
-              />
-            </div>
-            <p id="phone-help" class="field__help">
-              International format with country code.
-            </p>
-            <p id="phone-error" class="field__error" role="alert"></p>
-          </div>
-
-          <div id="recaptcha-container" class="recaptcha"></div>
-
-          <button type="submit" id="send-otp-btn" class="button button--primary">
-            <span class="button__label">Send verification code</span>
-            <span class="button__arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Status Highlights -->
+        <div class="status-bar">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-            </span>
-            <span class="button__spinner" aria-hidden="true"></span>
-          </button>
-        </form>
-      </section>
-
-      <!-- STEP 2: OTP -->
-      <section id="step-otp" class="step is-hidden" aria-labelledby="step-otp-title">
-        <h2 id="step-otp-title" class="step__title">Enter verification code</h2>
-        <p class="step__description">
-          Sent to <strong id="phone-display" class="mono"></strong>
-        </p>
-
-        <form id="otp-form" novalidate class="form">
-          <div class="field">
-            <label for="otp" class="field__label">6-digit code</label>
-            <input
-              type="text"
-              id="otp"
-              name="otp"
-              class="field__input field__input--otp mono"
-              placeholder="••••••"
-              autocomplete="one-time-code"
-              inputmode="numeric"
-              maxlength="6"
-              pattern="\d{6}"
-              required
-              aria-describedby="otp-error"
-            />
-            <p id="otp-error" class="field__error" role="alert"></p>
+            </div>
+            <div>
+              <div class="stat-val">99.98%</div>
+              <div class="stat-lbl">Services Uptime</div>
+            </div>
           </div>
 
-          <div class="button-row">
-            <button type="button" id="back-btn" class="button button--ghost">
-              <span class="button__label">Back</span>
-            </button>
-            <button type="submit" id="verify-otp-btn" class="button button--primary">
-              <span class="button__label">Continue</span>
-              <span class="button__spinner" aria-hidden="true"></span>
-            </button>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="stat-val">Verified</div>
+              <div class="stat-lbl">Privacy & Data Safety</div>
+            </div>
           </div>
 
-          <button type="button" id="resend-btn" class="link-button" disabled>
-            Resend in <span id="resend-timer" class="mono">30</span>s
-          </button>
-        </form>
-      </section>
-
-      <!-- STEP 3: Confirm -->
-      <section id="step-confirm" class="step is-hidden" aria-labelledby="step-confirm-title">
-        <h2 id="step-confirm-title" class="step__title">Final confirmation</h2>
-
-        <div class="warning" role="alert">
-          <div class="warning__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="stat-val">End-to-End</div>
+              <div class="stat-lbl">OTP Authentication</div>
+            </div>
           </div>
-          <div class="warning__body">
-            <h3 class="warning__title">This is permanent</h3>
-            <ul class="warning__list">
-              <li>Your profile and credentials</li>
-              <li>Saved data and preferences</li>
-              <li>Complete activity history</li>
-            </ul>
+
+          <div class="stat-item">
+            <div class="stat-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div>
+              <div class="stat-val">&lt; 150ms</div>
+              <div class="stat-lbl">Global CDN Latency</div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <label class="checkbox">
-          <input type="checkbox" id="confirm-checkbox" />
-          <span class="checkbox__box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="checkbox__text">
-            I understand this action is irreversible and all my data will be permanently erased.
-          </span>
-        </label>
-
-        <div class="button-row">
-          <button type="button" id="cancel-btn" class="button button--ghost">
-            <span class="button__label">Cancel</span>
-          </button>
-          <button type="button" id="delete-btn" class="button button--danger" disabled>
-            <span class="button__label">Delete account</span>
-            <span class="button__spinner" aria-hidden="true"></span>
-          </button>
-        </div>
-      </section>
-
-      <!-- SUCCESS -->
-      <section id="step-success" class="step is-hidden" aria-labelledby="step-success-title">
-        <div class="success">
-          <div class="success__orb" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h2 id="step-success-title" class="success__title">
-            Account <em>erased.</em>
-          </h2>
-          <p class="success__description">
-            Every trace of your data has been permanently removed.
-            Thank you for being with us.
+    <!-- Essential Routes & Services Section -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Privacy & Security</span>
+          <h2 class="section-title">Developer & Compliance Portals</h2>
+          <p class="section-subtitle">
+            Direct access to official portals required for Google Play Store policies and transparent user data governance.
           </p>
         </div>
-      </section>
 
-      <!-- Toast / status -->
-      <div id="status" class="status" role="status" aria-live="polite"></div>
-    </article>
+        <div class="endpoint-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          <!-- Download App Card -->
+          <div class="glass-card endpoint-card" style="border-color: rgba(13, 148, 136, 0.4); background: radial-gradient(circle at 10% 20%, rgba(13, 148, 136, 0.15), transparent 70%), var(--bg-card);">
+            <div>
+              <div class="endpoint-header">
+                <span class="endpoint-badge" style="background: rgba(13, 148, 136, 0.2); color: #2dd4bf;">OFFICIAL ANDROID APP</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2dd4bf">
+                  <path d="M3.609 1.814L13.792 12 3.61 22.186a2.22 2.22 0 0 1-.61-1.572V3.386c0-.598.225-1.157.609-1.572zm11.24 11.24l2.42 2.42-12.766 7.37 10.346-9.79zm0-2.108L4.503 1.156l12.766 7.37-2.42 2.42zm1.464 1.054l3.87 2.235c.957.553.957 1.455 0 2.008l-3.87 2.235-2.607-2.607 2.607-2.871z"/>
+                </svg>
+              </div>
+              <div class="endpoint-route">FindMedi on Google Play</div>
+              <p class="endpoint-desc">
+                Find nearby medical stores, search prescription drugs, compare availability in real time, and connect directly with local pharmacies on Android.
+              </p>
+            </div>
+            <div class="endpoint-footer">
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Package: com.chirag.findmedi</span>
+              <a href="https://play.google.com/store/apps/details?id=com.chirag.findmedi&pcampaignid=web_share" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                Install Now &rarr;
+              </a>
+            </div>
+          </div>
 
-    <!-- <footer class="foot">
-      <span>Need help?</span>
-      <a href="mailto:support@findmedi.com">support@findmedi.com</a>
-    </footer> -->
+          <!-- Route 1: /delete-account -->
+          <div class="glass-card endpoint-card">
+            <div>
+              <div class="endpoint-header">
+                <span class="endpoint-badge danger">DATA PRIVACY & DELETION</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2">
+                  <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </div>
+              <div class="endpoint-route">/delete-account</div>
+              <p class="endpoint-desc">
+                Google Play Store compliant self-service user deletion endpoint. Allows FindMedi users to authenticate via SMS OTP and initiate immediate, permanent deletion of their account credentials and personal records.
+              </p>
+            </div>
+            <div class="endpoint-footer">
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Status: Active & Protected</span>
+              <a href="/delete-account" class="btn btn-outline-danger btn-sm">
+                Open Portal &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Official Privacy Policy -->
+          <div class="glass-card endpoint-card">
+            <div>
+              <div class="endpoint-header">
+                <span class="endpoint-badge public">OFFICIAL POLICY</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="endpoint-route">FindMedi Privacy Policy</div>
+              <p class="endpoint-desc">
+                Read our official privacy guidelines, data handling commitments, user confidentiality standards, and medical information privacy terms.
+              </p>
+            </div>
+            <div class="endpoint-footer">
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Google Sites Documentation</span>
+              <a href="https://sites.google.com/view/find-medi/home" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                Read Policy &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform Highlights Section -->
+    <section class="section" id="platform" style="background: rgba(17, 24, 39, 0.3);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Platform Pillars</span>
+          <h2 class="section-title">Engineered for Scalability & Compliance</h2>
+          <p class="section-subtitle">
+            FindMedi is designed following modern software craftsmanship standards: decoupled modules, rigorous user data controls, and scalable infrastructure.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="glass-card feature-box">
+            <div class="feature-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Store Compliance Ready</h3>
+            <p class="feature-desc">
+              Meets Google Play & Apple App Store account deletion mandates with full 3-step phone verification (OTP confirmation) before data purging.
+            </p>
+          </div>
+
+          <div class="glass-card feature-box">
+            <div class="feature-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Modular & Clean Code</h3>
+            <p class="feature-desc">
+              Clean separation of concerns with dedicated authentication, validation, UI orchestration, and configuration modules for optimal maintainability.
+            </p>
+          </div>
+
+          <div class="glass-card feature-box">
+            <div class="feature-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">High Speed CDN</h3>
+            <p class="feature-desc">
+              Global content delivery network caching guarantees lightning-fast loading of verified compliance files and dynamic developer portals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script type="module" src="js/main.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-icon" aria-hidden="true" style="background: transparent; overflow: hidden; padding: 2px;">
+              <img src="/assets/app-icon.png" alt="FindMedi Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" />
+            </div>
+            <span>FindMedi</span>
+          </a>
+          <p>
+            FindMedi provides medical store search, drug availability tracking, and healthcare accessibility solutions.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="/">Developer Home</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.chirag.findmedi&pcampaignid=web_share" target="_blank" rel="noopener">Download App</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#platform">Architecture</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Compliance & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="https://sites.google.com/view/find-medi/home" target="_blank" rel="noopener">Privacy Policy</a></li>
+            <li><a href="/delete-account">Delete Account</a></li>
+            <li><a href="https://support.google.com/googleplay/android-developer/answer/13327111" target="_blank" rel="noopener">Play Policy Compliance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact & Help</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@findmedi.com">Developer Support</a></li>
+            <li><a href="/delete-account">Privacy Services</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="current-year"></span> FindMedi Inc. All rights reserved.
+        </div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="https://sites.google.com/view/find-medi/home" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+          <a href="/delete-account" style="color: inherit; text-decoration: none;">Account Safety</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const navMenu = document.getElementById('nav-menu');
+    if (toggleBtn && navMenu) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
+  </script>
 </body>
 </html>
